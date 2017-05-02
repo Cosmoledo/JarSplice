@@ -15,4 +15,4 @@ Example:<br>
 
 ## German
 
-Dieses Projekt basiert auf http://ninjacave.com/jarsplice, jedoch bietet sie mehr Features wie beispielsweise Befehlszeilenparameter-Unterstützung.
+Dieses Projekt basiert auf http://ninjacave.com/jarsplice, jedoch bietet es mehr Features wie beispielsweise Befehlszeilenparameter-Unterstützung.

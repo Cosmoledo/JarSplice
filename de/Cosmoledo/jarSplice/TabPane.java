@@ -1,0 +1,64 @@
+package de.Cosmoledo.jarSplice;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
+
+public class TabPane extends JPanel implements ActionListener {
+	private ArrayList<JToggleButton> buttons = new ArrayList();
+	private JPanel topButtonPanel, bottomButtonPanel, cardPanel;
+	private CardLayout cards = new CardLayout();
+	
+	public TabPane() {
+		this.setLayout(new BorderLayout());
+		JPanel sideBarPanel = new JPanel(new BorderLayout());
+		sideBarPanel.setBackground(Color.blue);
+		this.topButtonPanel = new JPanel(new GridLayout(0, 1));
+		this.topButtonPanel.setPreferredSize(new Dimension(195, 240));
+		this.topButtonPanel.setMaximumSize(new Dimension(195, 240));
+		this.topButtonPanel.setMinimumSize(new Dimension(195, 240));
+		JPanel gapPanel = new JPanel(new BorderLayout());
+		this.bottomButtonPanel = new JPanel(new GridLayout(0, 1));
+		this.bottomButtonPanel.setPreferredSize(new Dimension(195, 144));
+		this.bottomButtonPanel.setMaximumSize(new Dimension(195, 144));
+		this.bottomButtonPanel.setMinimumSize(new Dimension(195, 144));
+		sideBarPanel.add(this.topButtonPanel, "First");
+		sideBarPanel.add(gapPanel, "Center");
+		sideBarPanel.add(this.bottomButtonPanel, "Last");
+		this.add(sideBarPanel, "Before");
+		this.cardPanel = new JPanel(this.cards);
+		this.add(this.cardPanel, "Center");
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		for(int i = 0; i < this.buttons.size(); i++) {
+			JToggleButton button = this.buttons.get(i);
+			if(e.getSource() == button) {
+				button.setSelected(true);
+				this.cards.show(this.cardPanel, button.getText());
+			} else
+				button.setSelected(false);
+		}
+	}
+	
+	private void addButton(JToggleButton button, boolean useTopButtonPanel) {
+		button.setHorizontalAlignment(2);
+		this.buttons.add(button);
+		button.addActionListener(this);
+		if(useTopButtonPanel)
+			this.topButtonPanel.add(button);
+		else
+			this.bottomButtonPanel.add(button);
+		if(this.buttons.size() == 1)
+			button.setSelected(true);
+	}
+	
+	public void addTab(String name, JPanel panel, boolean useTopButtonPanel) {
+		this.addButton(new JToggleButton(name), useTopButtonPanel);
+		this.cardPanel.add(panel, name);
+	}
+}

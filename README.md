@@ -5,13 +5,13 @@ This project is based on http://ninjacave.com/jarsplice, but it provides more fe
 
 How to use the console version of JarSplice:<br>
 * <b>-j</b>: Define here the jars, which should be compressed<br>
-+ -n ~ Define here the natives, which should be compressed<br>
-+ -o * Define here the output path and name<br>
-~ -m * Define here the main class<br>
-+ -v * Define here vm arguments<br>
+* <b>-n</b>: Define here the natives, which should be compressed<br>
+* <b>-o</b>: Define here the output path and name<br>
+* <b>-m</b>: Define here the main class<br>
+* <b>-v</b>: Define here vm arguments<br>
 
 Example:<br>
-	-j a.jar b.jar -n x32.dll x32.so -o c.jar -m main.Main -v -Xms128m -Xmx512m
+* <b>-j</b> a.jar b.jar <b>-n</b> x32.dll x32.so <b>-o</b> c.jar <b>-m</b> main.Main <b>-v</b> -Xms128m -Xmx512m
 
 ## German
 

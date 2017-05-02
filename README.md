@@ -1,4 +1,5 @@
 # JarSplice
+## English
 
 This project is based on http://ninjacave.com/jarsplice, but it provides more features, for example command line parameter support.
 
@@ -12,6 +13,6 @@ How to use the console version of JarSplice:
 Example:
 	-j a.jar b.jar -n x32.dll x32.so -o c.jar -m main.Main -v -Xms128m -Xmx512m
 
-# JarSplice
+## German
 
 Dieses Projekt basiert auf http://ninjacave.com/jarsplice, jedoch bietet sie mehr Features wie beispielsweise Befehlszeilenparameter-Unterstützung.

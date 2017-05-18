@@ -17,7 +17,7 @@ public class NativesPanel extends JPanel implements ActionListener {
 	private JFileChooser fileChooser;
 	private File[] selectedFiles;
 	private JList list;
-	
+
 	public NativesPanel() {
 		this.fileChooser = new JFileChooser();
 		this.fileChooser.setMultiSelectionEnabled(true);
@@ -30,7 +30,7 @@ public class NativesPanel extends JPanel implements ActionListener {
 				String filename = file.getName();
 				return (filename.endsWith(".dll")) || (filename.endsWith(".so")) || (filename.endsWith(".jnilib")) || (filename.endsWith(".dylib"));
 			}
-			
+
 			@Override
 			public String getDescription() {
 				return "*.dll, *.so, *.jnilib, *.dylib";
@@ -52,7 +52,7 @@ public class NativesPanel extends JPanel implements ActionListener {
 		buttonPanel.add(this.removeButton);
 		this.add(buttonPanel, "Last");
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.addButton) {
@@ -74,7 +74,7 @@ public class NativesPanel extends JPanel implements ActionListener {
 				this.listModel.removeElement(selectedItems.get(i));
 		}
 	}
-	
+
 	public String[] getSelectedFiles() {
 		if(this.selectedFiles == null)
 			return new String[0];

@@ -17,7 +17,7 @@ public class JarsPanel extends JPanel implements ActionListener {
 	private JFileChooser fileChooser;
 	private File[] selectedFiles;
 	private JList list;
-	
+
 	public JarsPanel() {
 		this.fileChooser = new JFileChooser();
 		this.fileChooser.setMultiSelectionEnabled(true);
@@ -30,7 +30,7 @@ public class JarsPanel extends JPanel implements ActionListener {
 				String filename = file.getName();
 				return (filename.endsWith(".jar")) || (filename.endsWith(".zip"));
 			}
-			
+
 			@Override
 			public String getDescription() {
 				return "*.jar, *.zip";
@@ -52,7 +52,7 @@ public class JarsPanel extends JPanel implements ActionListener {
 		buttonPanel.add(this.removeButton);
 		this.add(buttonPanel, "Last");
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.addButton) {
@@ -74,7 +74,7 @@ public class JarsPanel extends JPanel implements ActionListener {
 				this.listModel.removeElement(selectedItems.get(i));
 		}
 	}
-	
+
 	public String[] getSelectedFiles() {
 		if(this.selectedFiles == null)
 			return new String[0];

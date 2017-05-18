@@ -11,7 +11,7 @@ public class TabPane extends JPanel implements ActionListener {
 	private ArrayList<JToggleButton> buttons = new ArrayList();
 	private JPanel topButtonPanel, bottomButtonPanel, cardPanel;
 	private CardLayout cards = new CardLayout();
-	
+
 	public TabPane() {
 		this.setLayout(new BorderLayout());
 		JPanel sideBarPanel = new JPanel(new BorderLayout());
@@ -32,7 +32,7 @@ public class TabPane extends JPanel implements ActionListener {
 		this.cardPanel = new JPanel(this.cards);
 		this.add(this.cardPanel, "Center");
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for(int i = 0; i < this.buttons.size(); i++) {
@@ -44,7 +44,7 @@ public class TabPane extends JPanel implements ActionListener {
 				button.setSelected(false);
 		}
 	}
-	
+
 	private void addButton(JToggleButton button, boolean useTopButtonPanel) {
 		button.setHorizontalAlignment(2);
 		this.buttons.add(button);
@@ -56,7 +56,7 @@ public class TabPane extends JPanel implements ActionListener {
 		if(this.buttons.size() == 1)
 			button.setSelected(true);
 	}
-	
+
 	public void addTab(String name, JPanel panel, boolean useTopButtonPanel) {
 		this.addButton(new JToggleButton(name), useTopButtonPanel);
 		this.cardPanel.add(panel, name);

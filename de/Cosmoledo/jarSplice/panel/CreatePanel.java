@@ -16,7 +16,7 @@ public class CreatePanel extends JPanel implements ActionListener {
 	private Splicer splicer = new Splicer();
 	private JFileChooser fileChooser;
 	private JButton createButton;
-	
+
 	public CreatePanel() {
 		this.fileChooser = new JFileChooser() {
 			@Override
@@ -46,7 +46,7 @@ public class CreatePanel extends JPanel implements ActionListener {
 				String filename = file.getName();
 				return filename.endsWith(".jar");
 			}
-			
+
 			@Override
 			public String getDescription() {
 				return "*.jar";
@@ -62,7 +62,7 @@ public class CreatePanel extends JPanel implements ActionListener {
 		buttonPanel.add(this.createButton);
 		this.add(buttonPanel);
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.createButton) {
@@ -100,7 +100,7 @@ public class CreatePanel extends JPanel implements ActionListener {
 			}
 		}
 	}
-	
+
 	private String getOutputFile(File file) {
 		String outputFile = file.getAbsolutePath();
 		if(!outputFile.endsWith(".jar"))

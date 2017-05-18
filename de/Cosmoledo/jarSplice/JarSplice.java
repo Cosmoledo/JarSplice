@@ -14,7 +14,7 @@ public class JarSplice extends JFrame {
 	public JarsPanel jarsPanel = new JarsPanel();
 	public NativesPanel nativesPanel = new NativesPanel();
 	public ClassPanel classPanel = new ClassPanel();
-	
+
 	public JarSplice() {
 		super("JarSplice - The Fat Jar Creator - version 0.10 - Cosmoledo's Version");
 		TabPane tabPane = new TabPane();
@@ -40,7 +40,7 @@ public class JarSplice extends JFrame {
 		else
 			Methods.write("jarsplice.config", new JFileChooser().getCurrentDirectory().getAbsolutePath());
 	}
-	
+
 	public static void main(String[] args) {
 		if(args != null && args.length > 0) {
 			ArrayList<String> jars = new ArrayList<>();
@@ -106,7 +106,7 @@ public class JarSplice extends JFrame {
 		} else
 			jarSpliceFrame = new JarSplice();
 	}
-	
+
 	private static String makeBretty(String[] in) {
 		String out = "";
 		for(int i = 0; i < in.length; i++) {
@@ -116,7 +116,7 @@ public class JarSplice extends JFrame {
 		}
 		return out;
 	}
-
+	
 	private static String[] toString(ArrayList<String> in) {
 		String[] out = new String[in.size()];
 		for(int i = 0; i < out.length; i++)

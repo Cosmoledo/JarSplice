@@ -15,7 +15,7 @@ public class Splicer {
 	private ArrayList<String> dirs = new ArrayList();
 	private int bufferSize;
 	private byte[] buffer = new byte[4096];
-	
+
 	private void addFilesFromJars(String[] jars, JarOutputStream out) throws Exception {
 		for(int i = 0; i < jars.length; i++) {
 			ZipFile jarFile = new ZipFile(jars[i]);
@@ -38,16 +38,16 @@ public class Splicer {
 			jarFile.close();
 		}
 	}
-	
+
 	private void addJarSpliceLauncher(JarOutputStream out) throws Exception {
 		InputStream in = JarSplice.class.getResourceAsStream("JarSpliceLauncher.class");
-		out.putNextEntry(new ZipEntry("org/ninjacave/jarsplice/JarSpliceLauncher.class"));
+		out.putNextEntry(new ZipEntry("de/Cosmoledo/jarSplice/JarSpliceLauncher.class"));
 		while((this.bufferSize = in.read(this.buffer, 0, this.buffer.length)) != -1)
 			out.write(this.buffer, 0, this.bufferSize);
 		in.close();
 		out.closeEntry();
 	}
-	
+
 	private void addNativesToJar(String[] natives, JarOutputStream out) throws Exception {
 		for(int i = 0; i < natives.length; i++) {
 			InputStream in = new FileInputStream(natives[i]);
@@ -58,7 +58,7 @@ public class Splicer {
 			out.closeEntry();
 		}
 	}
-	
+
 	public void createFatJar(String[] jars, String[] natives, String output, String mainClass, String vmArgs) throws Exception {
 		this.dirs.clear();
 		Manifest manifest = this.getManifest(mainClass, vmArgs);
@@ -73,17 +73,17 @@ public class Splicer {
 			fos.close();
 		}
 	}
-	
+
 	private String getFileName(String ref) {
 		ref = ref.replace('\\', '/');
 		return ref.substring(ref.lastIndexOf('/') + 1);
 	}
-	
+
 	private Manifest getManifest(String mainClass, String vmArgs) {
 		Manifest manifest = new Manifest();
 		Attributes attribute = manifest.getMainAttributes();
 		attribute.putValue("Manifest-Version", "1.0");
-		attribute.putValue("Main-Class", "org.ninjacave.jarsplice.JarSpliceLauncher");
+		attribute.putValue("Main-Class", "de.Cosmoledo.jarSplice.JarSpliceLauncher");
 		attribute.putValue("Launcher-Main-Class", mainClass);
 		attribute.putValue("Launcher-VM-Args", vmArgs);
 		return manifest;

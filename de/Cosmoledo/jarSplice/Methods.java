@@ -19,7 +19,7 @@ public class Methods {
 		}
 		return text + "";
 	}
-	
+
 	public static void write(String FileName, String Point) {
 		try {
 			BufferedWriter b = new BufferedWriter(new FileWriter(FileName));

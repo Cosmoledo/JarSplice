@@ -38,11 +38,11 @@ public class JarSpliceLauncher {
 			this.deleteNativeDirectory(nativeDirectory);
 		}
 	}
-	
+
 	public static void main(String[] args) throws Exception {
 		new JarSpliceLauncher();
 	}
-	
+
 	private void deleteNativeDirectory(String directoryName) {
 		File directory = new File(directoryName);
 		File[] files = directory.listFiles();
@@ -50,7 +50,7 @@ public class JarSpliceLauncher {
 			file.delete();
 		directory.delete();
 	}
-	
+
 	private void extractNatives(File file, String nativeDirectory) throws Exception {
 		JarFile jarFile = new JarFile(file, false);
 		Enumeration entities = jarFile.entries();
@@ -70,7 +70,7 @@ public class JarSpliceLauncher {
 		}
 		jarFile.close();
 	}
-	
+
 	private File getCodeSourceLocation() {
 		try {
 			return new File(JarSpliceLauncher.class.getProtectionDomain().getCodeSource().getLocation().toURI());
@@ -79,14 +79,14 @@ public class JarSpliceLauncher {
 		}
 		return null;
 	}
-	
+
 	private String getMainClass(File file) throws Exception {
 		JarFile jarFile = new JarFile(file);
 		Manifest manifest = jarFile.getManifest();
 		jarFile.close();
 		return manifest.getMainAttributes().getValue("Launcher-Main-Class");
 	}
-	
+
 	private String getNativeDirectory() {
 		String nativeDir = System.getProperty("deployment.user.cachedir");
 		if((nativeDir == null) || (System.getProperty("os.name").startsWith("Win")))
@@ -97,14 +97,14 @@ public class JarSpliceLauncher {
 			dir.mkdirs();
 		return nativeDir;
 	}
-	
+
 	private String getVmArgs(File file) throws Exception {
 		JarFile jarFile = new JarFile(file);
 		Manifest manifest = jarFile.getManifest();
 		jarFile.close();
 		return manifest.getMainAttributes().getValue("Launcher-VM-Args");
 	}
-	
+
 	private boolean isNativeFile(String entryName) {
 		String osName = System.getProperty("os.name");
 		String name = entryName.toLowerCase();
@@ -118,7 +118,7 @@ public class JarSpliceLauncher {
 			return true;
 		return false;
 	}
-	
+
 	private void writeConsoleOutput(Process process) throws Exception {
 		InputStream is = process.getInputStream();
 		InputStreamReader isr = new InputStreamReader(is);

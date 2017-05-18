@@ -10,7 +10,7 @@ import java.util.jar.JarFile;
 
 public class ReadFromJar {
 	public static final File TEMP_DIR = createTempDir();
-	
+
 	private static File createTempDir() {
 		int TEMP_DIR_ATTEMPTS = 50;
 		File baseDir = new File(System.getProperty("java.io.tmpdir"));
@@ -23,7 +23,7 @@ public class ReadFromJar {
 		throw new IllegalStateException("Failed to create directory within " + TEMP_DIR_ATTEMPTS + " attempts (tried " + baseName + "0 to " + baseName + (TEMP_DIR_ATTEMPTS - 1)
 			+ ')');
 	}
-	
+
 	public static boolean deleteDirectory(File directory) {
 		if(directory.exists()) {
 			File[] files = directory.listFiles();
@@ -36,7 +36,7 @@ public class ReadFromJar {
 		}
 		return (directory.delete());
 	}
-	
+
 	public static void extractJar(File input, String output) throws IOException {
 		JarFile jarfile = new JarFile(input);
 		Enumeration<JarEntry> enu = jarfile.entries();

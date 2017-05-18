@@ -12,7 +12,7 @@ public class ClassPanel extends JPanel implements ActionListener {
 	private JButton optionsButton = new JButton("Show Options");
 	private JPanel vmArgBox;
 	public JTextField classTextField, vmTextField;
-	
+
 	public ClassPanel() {
 		TitledBorder border = BorderFactory.createTitledBorder("Set Main Class");
 		border.setTitleJustification(2);
@@ -25,7 +25,7 @@ public class ClassPanel extends JPanel implements ActionListener {
 		this.optionsButton.addActionListener(this);
 		this.optionsButton.setPreferredSize(new Dimension(150, 30));
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.optionsButton)
@@ -37,7 +37,7 @@ public class ClassPanel extends JPanel implements ActionListener {
 				this.optionsButton.setText("Hide Options");
 			}
 	}
-	
+
 	private JPanel getMainClassBox() {
 		JPanel mainClassBox = new JPanel();
 		mainClassBox.setLayout(new BorderLayout(5, 5));
@@ -63,7 +63,7 @@ public class ClassPanel extends JPanel implements ActionListener {
 		mainClassBox.add(centerPanel3, "Last");
 		return mainClassBox;
 	}
-	
+
 	private JPanel getVmArgBox() {
 		JPanel vmArgBox = new JPanel();
 		vmArgBox.setLayout(new BorderLayout(5, 5));

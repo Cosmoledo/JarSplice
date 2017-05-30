@@ -3,6 +3,7 @@ package de.Cosmoledo.jarSplice;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -81,7 +82,7 @@ public class JarSplice extends JFrame {
 					default:
 						break;
 				}
-			if(jars.isEmpty() || natives.isEmpty() || output.isEmpty() || mainClass.isEmpty()) {
+			if(jars.isEmpty() || natives.isEmpty() || output.isEmpty()) {
 				System.out.println("How to use the console version of JarSplice made by Cosmoledo (c):");
 				System.out.println("\t-j\tDefine here the jars, which should be compressed");
 				System.out.println("\t-n\tDefine here the natives, which should be compressed");
@@ -89,11 +90,27 @@ public class JarSplice extends JFrame {
 				System.out.println("\t-m\tDefine here the main class");
 				System.out.println("\t-v\tDefine here vm arguments");
 				System.out.println();
+				System.out.println("If you do not define any main class, it will try to take the one from the first jar");
+				System.out.println();
 				System.out.println("Example:");
 				System.out.println("\t-j a.jar b.jar -n x32.dll x32.so -o c.jar -m main.Main -v -Xms128m -Xmx512m");
 				System.exit(0);
 			}
 			try {
+				if(mainClass.isEmpty())
+					try {
+						boolean containsManifest = ReadFromJar.extractJar(new File(jars.get(0)), ReadFromJar.TEMP_DIR.getAbsolutePath());
+						if(containsManifest) {
+							String[] lines = Methods.readExternal(ReadFromJar.TEMP_DIR.getAbsolutePath() + "/manifest.mf").split("\n");
+							for(int i = 0; i < lines.length; i++)
+								if(lines[i].toLowerCase().contains("main-class")) {
+									mainClass = lines[i].split(" ")[1];
+									break;
+								}
+						}
+					} catch(IOException e1) {
+						e1.printStackTrace();
+					}
 				System.out.println("Jar files:\n" + makeBretty(toString(jars)));
 				System.out.println("Native files:\n" + makeBretty(toString(natives)));
 				System.out.println("Output:\n\t" + output);
@@ -116,7 +133,7 @@ public class JarSplice extends JFrame {
 		}
 		return out;
 	}
-	
+
 	private static String[] toString(ArrayList<String> in) {
 		String[] out = new String[in.size()];
 		for(int i = 0; i < out.length; i++)

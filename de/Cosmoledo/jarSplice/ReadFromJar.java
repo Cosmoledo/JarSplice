@@ -37,7 +37,7 @@ public class ReadFromJar {
 		return (directory.delete());
 	}
 
-	public static void extractJar(File input, String output) throws IOException {
+	public static boolean extractJar(File input, String output) throws IOException {
 		JarFile jarfile = new JarFile(input);
 		Enumeration<JarEntry> enu = jarfile.entries();
 		while(enu.hasMoreElements()) {
@@ -55,7 +55,10 @@ public class ReadFromJar {
 				fo.write(is.read());
 			fo.close();
 			is.close();
+			jarfile.close();
+			return true;
 		}
 		jarfile.close();
+		return false;
 	}
 }

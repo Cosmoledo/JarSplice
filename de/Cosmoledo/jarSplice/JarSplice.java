@@ -17,7 +17,7 @@ public class JarSplice extends JFrame {
 	public ClassPanel classPanel = new ClassPanel();
 
 	public JarSplice() {
-		super("JarSplice - The Fat Jar Creator - version 0.10 - Cosmoledo's Version");
+		super("JarSplice - The Fat Jar Creator - version 1.10 - Cosmoledo's Version");
 		TabPane tabPane = new TabPane();
 		tabPane.addTab("INTRODUCTION", new IntroductionPanel(), true);
 		tabPane.addTab("1) ADD JARS", this.jarsPanel, true);

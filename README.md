@@ -13,6 +13,8 @@ How to use the console version of JarSplice:<br>
 Example:<br>
 * <b>-j</b> a.jar b.jar <b>-n</b> x32.dll x32.so <b>-o</b> c.jar <b>-m</b> main.Main <b>-v</b> -Xms128m -Xmx512m
 
+If you do not define any main class, it will try to take the one from the first jar.
+
 ## German
 
 Dieses Projekt basiert auf http://ninjacave.com/jarsplice, jedoch bietet es mehr Features wie beispielsweise Befehlszeilenparameter-Unterstützung.
